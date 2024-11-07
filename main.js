@@ -1,15 +1,26 @@
 const express = require('express')
 const app = express()
-const port = 3000
-const path = require('path')
+const port = 4000
+const ejs = require('ejs')
+const colors = require ('colors')
 
-app.get('/',(req,res)=>{
-    res.sendFile(path.join(__dirname,'login.html'))
+//ejs
+
+app.set('view engine','ejs');
+app.use (express.json());
+app.use(express.urlencoded({ extended: false }));
+
+//rutas
+
+app.get('/', function (req,res){
+    res.render('login')
 })
-app.get('/bien',(req,res)=>{
-    res.sendFile(path.join(__dirname,'bien.html'))
+app.get('/bien',function (req,res){
+    res.render('bien')
 })
-app.get('/datos',(req,res)=>{
-    res.sendFile(path.join(__dirname,'datos.html'))
+app.get('/datos',function(req,res){
+    res.render('datos')
 })
+//servidor
 app.listen(port)
+console.log(`server en puerto ${port}`.bgWhite)
