@@ -1,0 +1,28 @@
+CREATE DATABASE git;
+USE git;
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre1 VARCHAR(50) NOT NULL,
+    nombre2 VARCHAR(50),
+    apellido1 VARCHAR(50) NOT NULL,
+   apellido2 VARCHAR(50),
+    telefono VARCHAR(15),
+    fecha_nacimiento VARCHAR(20),
+    tipo_de_sangre VARCHAR(3),
+    direccion VARCHAR(100),
+    correo VARCHAR(100) UNIQUE NOT NULL,
+    ciudad VARCHAR(50),
+    identificacion VARCHAR(20) UNIQUE NOT NULL,
+    ocupacion VARCHAR(50)
+    
+);
+
+SELECT * FROM usuarios;
+INSERT INTO usuarios (nombre1, nombre2, apellido1, apellido2, telefono, fecha_nacimiento,tipo_de_sangre , direccion, correo, ciudad, identificacion, ocupacion) 
+VALUES ('juan', 'Sebastian', 'sora', 'pasto', '3102483051', '03-06-2007', 'O+', 'balcon', 'juansebastiansorapasto@gmail.com', 'tame', '1116859090', 'Estudiante');
+
+SELECT * FROM usuarios WHERE correo = 'juansebastiansorapasto@gmail.com';
+delete from usuarios where id = "1";
+drop table usuarios;
+SELECT * FROM usuarios WHERE nombre1 = 'juan' AND identificacion = '1116859090';
+select * from usuarios where fecha_nacimiento = STR_TO_DATE('03-06-20067', '%d-%m-%Y');
